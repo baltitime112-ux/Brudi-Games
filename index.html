@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Brudi Games</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, #17251b 0%, transparent 35%),
+        #07090d;
+      color: white;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1150px;
+      margin: auto;
+      padding: 25px 0 50px;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 35px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #70ff4d;
+    }
+
+    #clock {
+      color: #8d98a8;
+      font-size: 14px;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.5fr 0.8fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      background: linear-gradient(
+        145deg,
+        rgba(18, 24, 35, 0.97),
+        rgba(9, 13, 19, 0.97)
+      );
+
+      border: 1px solid #202938;
+      border-radius: 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    .hero-main {
+      min-height: 330px;
+      padding: 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(112,255,77,0.12),
+          transparent 45%
+        );
+    }
+
+    .tag {
+      color: #70ff4d;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 85px);
+      line-height: 0.9;
+      letter-spacing: -5px;
+      margin: 12px 0 20px;
+    }
+
+    .description {
+      color: #8f9aaa;
+      line-height: 1.6;
+      max-width: 570px;
+    }
+
+    /* BUTTONS */
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .button {
+      border: 1px solid #293342;
+      background: #111722;
+      color: white;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: #70ff4d;
+    }
+
+    .button.green {
+      background: #70ff4d;
+      color: #071006;
+      border-color: #70ff4d;
+    }
+
+    /* PROFILE */
+
+    .profile {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: linear-gradient(
+        135deg,
+        #70ff4d,
+        #1c8e28
+      );
+
+      color: #071006;
+      font-size: 32px;
+      font-weight: 900;
+    }
+
+    .profile h2 {
+      margin-top: 18px;
+      margin-bottom: 5px;
+    }
+
+    .steam-id {
+      color: #8d98a8;
+      font-size: 13px;
+      word-break: break-all;
+    }
+
+    .online {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #aaff9a;
+      font-size: 13px;
+      margin-top: 16px;
+    }
+
+    .online-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #70ff4d;
+      box-shadow: 0 0 12px #70ff4d;
+    }
+
+    .updated {
+      color: #596373;
+      font-size: 12px;
+    }
+
+    /* STATS */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      padding: 25px;
+    }
+
+    .stat-title {
+      color: #8d98a8;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
+    }
+
+    .stat-value {
+      font-size: 30px;
+      font-weight: 900;
+      margin-top: 10px;
+    }
+
+    .green-text {
+      color: #70ff4d;
+    }
+
+    /* SECTIONS */
+
+    .section {
+      padding: 26px;
+      margin-bottom: 18px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .section-header h2 {
+      font-size: 20px;
+    }
+
+    .small {
+      color: #697485;
+      font-size: 13px;
+    }
+
+    /* GAMES */
+
+    .games {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .game {
+      background: #0a0f16;
+      border: 1px solid #202938;
+      border-radius: 16px;
+      padding: 18px;
+      transition: 0.2s;
+    }
+
+    .game:hover {
+      transform: translateY(-3px);
+      border-color: #354256;
+    }
+
+    .game-name {
+      font-weight: bold;
+      font-size: 17px;
+    }
+
+    .game-info {
+      color: #778293;
+      font-size: 13px;
+      margin-top: 7px;
+    }
+
+    .bar {
+      height: 7px;
+      background: #1a222e;
+      border-radius: 50px;
+      margin-top: 15px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: #70ff4d;
+      border-radius: 50px;
+    }
+
+    /* FRIENDS */
+
+    .friends-text {
+      color: #8d98a8;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      color: #505b6a;
+      font-size: 12px;
+      margin-top: 30px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .games {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- NAV -->
+
+  <nav>
+    <div class="logo">
+      BRUDI<span>GAMES</span>
+    </div>
+
+    <div id="clock">
+      --:--:--
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="card hero-main">
+
+      <div class="tag">
+        GAMING DASHBOARD
+      </div>
+
+      <h1>
+        WELCOME<br>
+        BRUDI.
+      </h1>
+
+      <p class="description">
+        Deine persönliche Gaming-Base.
+        Steam, Games und Stats auf einer Seite.
+      </p>
+
+      <div class="buttons">
+
+        <a
+          class="button green"
+          href="https://steamcommunity.com/profiles/76561198745256768"
+          target="_blank"
+        >
+          Steam-Profil öffnen ↗
+        </a>
+
+        <button
+          class="button"
+          onclick="sharePage()"
+        >
+          Link teilen
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- PROFILE -->
+
+    <div class="card profile">
+
+      <div>
+
+        <div class="avatar">
+          B
+        </div>
+
+        <h2>
+          Brudi
+        </h2>
+
+        <div class="steam-id">
+          Steam ID:
+          76561198745256768
+        </div>
+
+        <div class="online">
+
+          <span class="online-dot"></span>
+
+          Gaming-Station online
+
+        </div>
+
+      </div>
+
+      <div class="updated">
+
+        Aktualisiert:
+        <span id="date">
+          --.--.----
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STATS -->
+
+  <section class="stats">
+
+    <div class="card stat">
+
+      <div class="stat-title">
+        Uhrzeit
+      </div>
+
+      <div
+        class="stat-value"
+        id="time"
+      >
+        --:--
+      </div>
+
+    </div>
+
+
+    <div class="card stat">
+
+      <div class="stat-title">
+        Status
+      </div>
+
+      <div class="stat-value green-text">
+        ONLINE
+      </div>
+
+    </div>
+
+
+    <div class="card stat">
+
+      <div class="stat-title">
+        Steam
+      </div>
+
+      <div class="stat-value">
+        CONNECTED
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- GAMES -->
+
+  <section class="card section">
+
+    <div class="section-header">
+
+      <h2>
+        Meine Games
+      </h2>
+
+      <span class="small">
+        FAVORITEN
+      </span>
+
+    </div>
+
+
+    <div class="games">
+
+      <div class="game">
+
+        <div class="game-name">
+          Grand Theft Auto V
+        </div>
+
+        <div class="game-info">
+          Open World · Steam
+        </div>
+
+        <div class="bar">
+          <div
+            class="bar-fill"
+            style="width:82%"
+          ></div>
+        </div>
+
+      </div>
+
+
+      <div class="game">
+
+        <div class="game-name">
+          Euro Truck Simulator 2
+        </div>
+
+        <div class="game-info">
+          Simulation · Steam
+        </div>
+
+        <div class="bar">
+          <div
+            class="bar-fill"
+            style="width:64%"
+          ></div>
+        </div>
+
+      </div>
+
+
+      <div class="game">
+
+        <div class="game-name">
+          League of Legends
+        </div>
+
+        <div class="game-info">
+          MOBA · Riot Games
+        </div>
+
+        <div class="bar">
+          <div
+            class="bar-fill"
+            style="width:71%"
+          ></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FRIENDS -->
+
+  <section class="card section">
+
+    <div class="section-header">
+
+      <h2>
+        Für Freunde
+      </h2>
+
+      <span class="small">
+        ÖFFENTLICH
+      </span>
+
+    </div>
+
+    <p class="friends-text">
+      Schick einfach den Link zu dieser Seite
+      an deine Freunde. Sie können sich die
+      Gaming-Seite anschauen, ohne sich
+      irgendwo anmelden zu müssen.
+    </p>
+
+    <div class="buttons">
+
+      <button
+        class="button green"
+        onclick="sharePage()"
+      >
+        Seite teilen
+      </button>
+
+      <a
+        class="button"
+        href="https://steamcommunity.com/profiles/76561198745256768"
+        target="_blank"
+      >
+        Steam ↗
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+    BRUDIGAMES · private gaming page
+  </footer>
+
+</div>
+
+
+<script>
+
+  /* UHRZEIT */
+
+  function updateClock() {
+
+    const now = new Date();
+
+    const time =
+      now.toLocaleTimeString(
+        "de-DE",
+        {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit"
+        }
+      );
+
+    document.getElementById("clock").textContent = time;
+
+    document.getElementById("time").textContent =
+      time.substring(0, 5);
+
+    document.getElementById("date").textContent =
+      now.toLocaleDateString("de-DE");
+  }
+
+
+  updateClock();
+
+  setInterval(updateClock, 1000);
+
+
+  /* LINK TEILEN */
+
+  async function sharePage() {
+
+    if (navigator.share) {
+
+      try {
+
+        await navigator.share({
+
+          title: "Brudi Games",
+
+          text: "Check meine Gaming-Seite:",
+
+          url: window.location.href
+
+        });
+
+      } catch (error) {
+
+        console.log("Teilen abgebrochen.");
+
+      }
+
+    } else {
+
+      try {
+
+        await navigator.clipboard.writeText(
+          window.location.href
+        );
+
+        alert("Link wurde kopiert!");
+
+      } catch (error) {
+
+        alert(
+          "Kopiere einfach den Link aus der Browserzeile."
+        );
+
+      }
+
+    }
+
+  }
+
+</script>
+
+</body>
+</html>
