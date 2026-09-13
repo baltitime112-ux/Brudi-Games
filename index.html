@@ -262,51 +262,114 @@
       font-size: 13px;
     }
 
-    /* GAMES */
+  /* GAMES / WISHLIST */
 
-    .games {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
+.games {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
 
-    .game {
-      background: #0a0f16;
-      border: 1px solid #202938;
-      border-radius: 16px;
-      padding: 18px;
-      transition: 0.2s;
-    }
+.game {
+  position: relative;
+  display: block;
+  background: #0a0f16;
+  border: 1px solid #202938;
+  border-radius: 18px;
+  overflow: hidden;
 
-    .game:hover {
-      transform: translateY(-3px);
-      border-color: #354256;
-    }
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
 
-    .game-name {
-      font-weight: bold;
-      font-size: 17px;
-    }
+.game:hover {
+  transform: translateY(-6px);
+  border-color: #70ff4d;
 
-    .game-info {
-      color: #778293;
-      font-size: 13px;
-      margin-top: 7px;
-    }
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.45),
+    0 0 25px rgba(112, 255, 77, 0.10);
+}
 
-    .bar {
-      height: 7px;
-      background: #1a222e;
-      border-radius: 50px;
-      margin-top: 15px;
-      overflow: hidden;
-    }
+.game-image {
+  width: 100%;
+  aspect-ratio: 460 / 215;
+  object-fit: cover;
+  display: block;
+  background: #111722;
+}
 
-    .bar-fill {
-      height: 100%;
-      background: #70ff4d;
-      border-radius: 50px;
-    }
+.game-content {
+  padding: 17px;
+}
+
+.game-number {
+  color: #70ff4d;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  margin-bottom: 7px;
+}
+
+.game-name {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.game-info {
+  color: #778293;
+  font-size: 12px;
+  margin-top: 7px;
+}
+
+.game::after {
+  content: "STEAM ↗";
+
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  background: rgba(7, 9, 13, 0.88);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(7px);
+
+  color: white;
+
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1px;
+
+  padding: 7px 9px;
+  border-radius: 8px;
+
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: 0.2s;
+}
+
+.game:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* TABLET */
+
+@media (max-width: 950px) {
+  .games {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* HANDY */
+
+@media (max-width: 600px) {
+  .games {
+    grid-template-columns: 1fr;
+  }
+}
 
     /* FRIENDS */
 
@@ -449,136 +512,291 @@
   </section>
 
 
-  <!-- STATS -->
+ <!-- STATS -->
 
-  <section class="stats">
+<section class="stats">
 
-    <div class="card stat">
-
-      <div class="stat-title">
-        Uhrzeit
-      </div>
-
-      <div
-        class="stat-value"
-        id="time"
-      >
-        --:--
-      </div>
-
+  <div class="card stat">
+    <div class="stat-title">
+      Wishlist Games
     </div>
 
+    <div class="stat-value green-text">
+      16
+    </div>
+  </div>
 
-    <div class="card stat">
 
-      <div class="stat-title">
-        Status
-      </div>
-
-      <div class="stat-value green-text">
-        ONLINE
-      </div>
-
+  <div class="card stat">
+    <div class="stat-title">
+      Coming Soon
     </div>
 
+    <div class="stat-value">
+      15
+    </div>
+  </div>
 
-    <div class="card stat">
 
-      <div class="stat-title">
-        Steam
-      </div>
-
-      <div class="stat-value">
-        CONNECTED
-      </div>
-
+  <div class="card stat">
+    <div class="stat-title">
+      Next Release
     </div>
 
-  </section>
-
-
-  <!-- GAMES -->
-
-  <section class="card section">
-
-    <div class="section-header">
-
-      <h2>
-        Meine Games
-      </h2>
-
-      <span class="small">
-        FAVORITEN
-      </span>
-
+    <div class="stat-value next-release">
+      Stream Train
     </div>
 
+    <div class="stat-sub">
+      15.10.2026
+    </div>
+  </div>
 
-    <div class="games">
-
-      <div class="game">
-
-        <div class="game-name">
-          Grand Theft Auto V
-        </div>
-
-        <div class="game-info">
-          Open World · Steam
-        </div>
-
-        <div class="bar">
-          <div
-            class="bar-fill"
-            style="width:82%"
-          ></div>
-        </div>
-
-      </div>
+</section>
 
 
-      <div class="game">
+ <!-- WISHLIST -->
 
-        <div class="game-name">
-          Euro Truck Simulator 2
-        </div>
+<section class="card section">
 
-        <div class="game-info">
-          Simulation · Steam
-        </div>
-
-        <div class="bar">
-          <div
-            class="bar-fill"
-            style="width:64%"
-          ></div>
-        </div>
-
-      </div>
-
-
-      <div class="game">
-
-        <div class="game-name">
-          League of Legends
-        </div>
-
-        <div class="game-info">
-          MOBA · Riot Games
-        </div>
-
-        <div class="bar">
-          <div
-            class="bar-fill"
-            style="width:71%"
-          ></div>
-        </div>
-
-      </div>
-
+  <div class="section-header">
+    <div>
+      <div class="tag">STEAM WISHLIST</div>
+      <h2>Meine Wunschliste</h2>
     </div>
 
-  </section>
+    <span class="small">16 GAMES</span>
+  </div>
 
+
+  <div class="games">
+
+    <!-- 01 -->
+    <a class="game" href="https://store.steampowered.com/app/4441950/" target="_blank">
+      <img class="game-image"
+           src="images/aliens.jpg"
+           alt="Aliens Took My Stuff">
+
+      <div class="game-content">
+        <div class="game-number">#01</div>
+        <div class="game-name">Aliens Took My Stuff</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+
+    <!-- 02 -->
+    <a class="game" href="https://store.steampowered.com/app/4661070/" target="_blank">
+      <img class="game-image"
+           src="images/hands-over.jpg"
+           alt="HANDS OVER">
+
+      <div class="game-content">
+        <div class="game-number">#02</div>
+        <div class="game-name">HANDS OVER</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+
+    <!-- 03 -->
+    <a class="game" href="https://store.steampowered.com/app/4502890/" target="_blank">
+      <img class="game-image"
+           src="images/cheatcheat.jpg"
+           alt="CheatCheat">
+
+      <div class="game-content">
+        <div class="game-number">#03</div>
+        <div class="game-name">CheatCheat</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+
+    <!-- 04 -->
+    <a class="game" href="https://store.steampowered.com/app/4534960/" target="_blank">
+      <img class="game-image"
+           src="images/dear-passengers.jpg"
+           alt="Dear Passengers">
+
+      <div class="game-content">
+        <div class="game-number">#04</div>
+        <div class="game-name">Dear Passengers</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+
+    <!-- 05 -->
+    <a class="game" href="https://store.steampowered.com/app/4348760/" target="_blank">
+      <img class="game-image"
+           src="images/airport.jpg"
+           alt="Totally Secure Airport">
+
+      <div class="game-content">
+        <div class="game-number">#05</div>
+        <div class="game-name">Totally Secure Airport</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+
+    <!-- 06 -->
+    <a class="game" href="https://store.steampowered.com/app/4715160/" target="_blank">
+      <img class="game-image"
+           src="images/finals-week.jpg"
+           alt="Finals Week">
+
+      <div class="game-content">
+        <div class="game-number">#06</div>
+        <div class="game-name">Finals Week ✍🏻</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+
+    <!-- 07 -->
+    <a class="game" href="https://store.steampowered.com/app/4686110/" target="_blank">
+      <img class="game-image"
+           src="images/agents-404.jpg"
+           alt="Agents 404">
+
+      <div class="game-content">
+        <div class="game-number">#07</div>
+        <div class="game-name">Agents 404</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+
+    <!-- 08 -->
+    <a class="game" href="https://store.steampowered.com/app/4071650/" target="_blank">
+      <img class="game-image"
+           src="images/stream-train.jpg"
+           alt="Stream Train">
+
+      <div class="game-content">
+        <div class="game-number">#08</div>
+        <div class="game-name">Stream Train</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+
+    <!-- 09 -->
+    <a class="game" href="https://store.steampowered.com/app/4498480/" target="_blank">
+      <img class="game-image"
+           src="images/hold-my-thing.jpg"
+           alt="Hold My Thing">
+
+      <div class="game-content">
+        <div class="game-number">#09</div>
+        <div class="game-name">Hold My Thing</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+
+    <!-- 10 -->
+    <a class="game" href="https://store.steampowered.com/app/4989380/" target="_blank">
+      <img class="game-image"
+           src="images/hospital-hustle.jpg"
+           alt="Hospital Hustle">
+
+      <div class="game-content">
+        <div class="game-number">#10</div>
+        <div class="game-name">Hospital Hustle</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+
+    <!-- 11 -->
+    <a class="game" href="https://store.steampowered.com/app/4767090/" target="_blank">
+      <img class="game-image"
+           src="images/emergency-buddies.jpg"
+           alt="Emergency Buddies">
+
+      <div class="game-content">
+        <div class="game-number">#11</div>
+        <div class="game-name">Emergency Buddies</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+
+    <!-- 12 -->
+    <a class="game" href="https://store.steampowered.com/app/4588510/" target="_blank">
+      <img class="game-image"
+           src="images/mayday-vacay.jpg"
+           alt="Mayday Vacay">
+
+      <div class="game-content">
+        <div class="game-number">#12</div>
+        <div class="game-name">Mayday Vacay</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+
+    <!-- 13 -->
+    <a class="game" href="https://store.steampowered.com/app/4928450/" target="_blank">
+      <img class="game-image"
+           src="images/grand-theft-timeline.jpg"
+           alt="Grand Theft Timeline">
+
+      <div class="game-content">
+        <div class="game-number">#13</div>
+        <div class="game-name">Grand Theft Timeline</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+
+    <!-- 14 -->
+    <a class="game" href="https://store.steampowered.com/app/4620600/" target="_blank">
+      <img class="game-image"
+           src="images/dynamite-day.jpg"
+           alt="Dynamite Day">
+
+      <div class="game-content">
+        <div class="game-number">#14</div>
+        <div class="game-name">Dynamite Day</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+
+    <!-- 15 -->
+    <a class="game" href="https://store.steampowered.com/app/4788240/" target="_blank">
+      <img class="game-image"
+           src="images/night-shift-hospital.jpg"
+           alt="Night Shift Hospital">
+
+      <div class="game-content">
+        <div class="game-number">#15</div>
+        <div class="game-name">Night Shift Hospital</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+
+    <!-- 16 -->
+    <a class="game" href="https://store.steampowered.com/app/4771290/" target="_blank">
+      <img class="game-image"
+           src="images/hands-up-g.jpg"
+           alt="Hands Up, G!">
+
+      <div class="game-content">
+        <div class="game-number">#16</div>
+        <div class="game-name">Hands Up, G!</div>
+        <div class="game-info">Steam Wishlist</div>
+      </div>
+    </a>
+
+  </div>
+
+</section>
 
   <!-- FRIENDS -->
 
